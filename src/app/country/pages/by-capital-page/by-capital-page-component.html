@@ -1,3 +1,3 @@
-<app-search-input-component placeholder="Buscar por capital"/>
+<app-search-input-component placeholder="Buscar por capital" (value)="onSearch($event)" />
 
-<app-country-list-component/>
+<app-country-list-component [countries]="countries()"/>
