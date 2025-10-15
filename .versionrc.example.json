@@ -1,0 +1,28 @@
+{
+  "header": "# Changelog\n\nTodos los cambios notables de este proyecto serán documentados en este archivo.\n",
+  "types": [
+    { "type": "feat", "section": "✨ Features" },
+    { "type": "fix", "section": "🐛 Bug Fixes" },
+    { "type": "chore", "section": "🔧 Chores", "hidden": false },
+    { "type": "docs", "section": "📚 Documentation", "hidden": false },
+    { "type": "style", "section": "💎 Styles", "hidden": false },
+    { "type": "refactor", "section": "♻️ Code Refactoring", "hidden": false },
+    { "type": "perf", "section": "⚡ Performance Improvements", "hidden": false },
+    { "type": "test", "section": "✅ Tests", "hidden": false }
+  ],
+  "commitUrlFormat": "{{host}}/{{owner}}/{{repository}}/commit/{{hash}}",
+  "compareUrlFormat": "{{host}}/{{owner}}/{{repository}}/compare/{{previousTag}}...{{currentTag}}",
+  "issueUrlFormat": "{{host}}/{{owner}}/{{repository}}/issues/{{id}}",
+  "userUrlFormat": "{{host}}/{{user}}",
+  "releaseCommitMessageFormat": "chore(release): {{currentTag}}",
+  "issuePrefixes": ["#"],
+  "skip": {
+    "changelog": false,
+    "commit": false,
+    "tag": false
+  },
+  "scripts": {
+    "postchangelog": "echo 'CHANGELOG generado con éxito'"
+  }
+}
+
