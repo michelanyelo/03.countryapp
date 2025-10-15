@@ -1,5 +1,16 @@
 # Changelog
 
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## 0.0.0 (2025-10-15)
+
+
+### 🔧 Chores
+
+* **versioning:** setup automatic versioning system with standard-version and commitlint ([82db94a](https://github.com/michelanyelo/03.countryapp/commit/82db94a41cd360bb9139398fa719bf0959ae53c0))
+
+# Changelog
+
 Todos los cambios notables de este proyecto serán documentados en este archivo.
 
 El formato está basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/),
