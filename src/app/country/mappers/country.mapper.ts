@@ -4,7 +4,7 @@ import { RestCountryResponse } from '../interfaces/rest-country.interface';
 export class CountryMapper {
   static mapRestCountryToCountry(country: RestCountryResponse): Country {
     return {
-      name: country.name.common,
+      name: country.translations.spa.common ?? country.name.common,
       capital: country.capital.join(', '),
       population: country.population,
       flags: {
