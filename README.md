@@ -56,7 +56,17 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 
 ## Versionado Automático
 
-Este proyecto usa **Conventional Commits** y **Standard Version** para gestionar versiones automáticamente.
+Este proyecto usa **Conventional Commits**, **Standard Version** y **Commitizen** para gestionar versiones y commits automáticamente.
+
+### 🚀 Uso Rápido (Recomendado)
+
+```bash
+# Commit interactivo (te guía paso a paso)
+npm run commit:add
+
+# Todo en uno: commit + versión + push
+npm run ship
+```
 
 ### Formato de Commits
 
@@ -118,6 +128,14 @@ Después de crear la versión, publícala con:
 ```bash
 git push --follow-tags origin master
 ```
+
+### 📚 Documentación de Versionado
+
+- **`QUICKSTART.md`** - Guía rápida de inicio
+- **`AUTOMATED_WORKFLOW.md`** - Workflows automatizados completos
+- **`AI_ASSISTANT_GUIDE.md`** - Cómo usar con asistentes de IA (Cursor/Copilot)
+- **`VERSIONING_GUIDE.md`** - Guía detallada con ejemplos
+- **`SETUP_SUMMARY.md`** - Resumen técnico de la configuración
 
 ## Additional Resources
 
