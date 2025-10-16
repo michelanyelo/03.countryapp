@@ -16,7 +16,23 @@ El sistema de versionado automático ya está configurado y funcionando en tu pr
 
 ## 🎯 Uso Diario
 
-### 1️⃣ Hacer cambios y commit
+### 🤖 Método Automatizado (RECOMENDADO)
+
+```bash
+# Asistente interactivo que te guía paso a paso
+npm run commit:add
+```
+
+El asistente te preguntará:
+- ✅ Tipo de cambio (feat, fix, docs...)
+- ✅ Ámbito (componente o archivo)
+- ✅ Descripción corta
+- ✅ Descripción larga (opcional)
+- ✅ Breaking changes (opcional)
+
+**¡No necesitas recordar el formato!**
+
+### 📝 Método Manual (Alternativo)
 
 ```bash
 # Haz tus cambios en el código
@@ -53,6 +69,19 @@ npm run release:major  # 1.0.0 → 2.0.0 (breaking)
 ```bash
 git push --follow-tags origin master
 ```
+
+### 🚀 TODO EN UNO (Super Rápido)
+
+```bash
+# Hace commit + versión + push automáticamente
+npm run ship
+```
+
+Este comando hace **todo** el proceso completo:
+1. `git add .` - Agrega cambios
+2. Te guía para crear el commit
+3. Genera la nueva versión
+4. Publica con tags
 
 ---
 
@@ -124,6 +153,13 @@ cat CHANGELOG.md
 
 ## 🔧 Comandos Disponibles
 
+### Commits Automatizados
+| Comando | Descripción |
+|---------|-------------|
+| `npm run commit:add` | 🤖 Commit interactivo (RECOMENDADO) |
+| `npm run commit` | Commit sin agregar archivos |
+
+### Versionado
 | Comando | Descripción | Ejemplo |
 |---------|-------------|---------|
 | `npm run release` | Versión automática | `0.0.0 → 1.0.0` |
@@ -131,6 +167,13 @@ cat CHANGELOG.md
 | `npm run release:minor` | Features | `1.0.0 → 1.1.0` |
 | `npm run release:major` | Breaking | `1.0.0 → 2.0.0` |
 | `npm run release:first` | Primera versión | Crea `1.0.0` |
+
+### Super Automatizados 🚀
+| Comando | Descripción |
+|---------|-------------|
+| `npm run ship` | ⚡ Commit + Versión + Push (TODO) |
+| `npm run ship:minor` | Commit + Minor + Push |
+| `npm run ship:major` | Commit + Major + Push |
 
 ---
 
@@ -165,6 +208,7 @@ git push --tags
 
 Para más detalles, consulta:
 
+- **`AUTOMATED_WORKFLOW.md`** - ⭐ Guía de comandos automatizados
 - **`VERSIONING_GUIDE.md`** - Guía completa con ejemplos
 - **`SETUP_SUMMARY.md`** - Resumen técnico de la configuración
 - **`README.md`** - Sección "Versionado Automático"

@@ -8,11 +8,16 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "prepare": "husky",
+    "commit": "git-cz",
+    "commit:add": "git add . && git-cz",
     "release": "standard-version",
     "release:minor": "standard-version --release-as minor",
     "release:major": "standard-version --release-as major",
     "release:patch": "standard-version --release-as patch",
-    "release:first": "standard-version --first-release"
+    "release:first": "standard-version --first-release",
+    "ship": "npm run commit:add && npm run release && git push --follow-tags origin master",
+    "ship:minor": "git add . && git commit -m 'chore: prepare release' && npm run release:minor && git push --follow-tags origin master",
+    "ship:major": "git add . && git commit -m 'chore: prepare release' && npm run release:major && git push --follow-tags origin master"
   },
   "prettier": {
     "printWidth": 100,
@@ -47,6 +52,8 @@
     "@commitlint/cli": "^19.0.0",
     "@commitlint/config-conventional": "^19.0.0",
     "@types/jasmine": "~5.1.0",
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
     "daisyui": "^5.1.25",
     "husky": "^9.0.0",
     "jasmine-core": "~5.9.0",
@@ -57,5 +64,10 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "standard-version": "^9.5.0",
     "typescript": "~5.9.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
