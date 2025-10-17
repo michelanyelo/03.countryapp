@@ -15,11 +15,23 @@ export class CountryService {
   searchByCapital(query: string): Observable<Country[]> {
     query = query.trim().toLowerCase();
     return this.http.get<RestCountryResponse[]>(`${this.apiUrl}/capital/${query}`).pipe(
-      map((restCountries) => CountryMapper.mapRestCountryArrayToCountryArray(restCountries)),
+      map((resp) => CountryMapper.mapRestCountryArrayToCountryArray(resp)),
       catchError((error) => {
         console.log('error', error);
 
         return throwError(() => new Error('Error al buscar por capital'));
+      })
+    );
+  }
+
+  searchByCountry(query: string): Observable<Country[]> {
+
+    query = query.trim().toLowerCase();
+    return this.http.get<RestCountryResponse[]>(`${this.apiUrl}/name/${query}`).pipe(
+      map((resp) => CountryMapper.mapRestCountryArrayToCountryArray(resp)),
+      catchError((error) => {
+        console.log('error', error);
+        return throwError(() => new Error('Error al buscar por país'));
       })
     );
   }

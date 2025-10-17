@@ -20,7 +20,7 @@
           <td class="text-center align-middle">{{country.name}}</td>
           <td class="text-center align-middle">{{country.capital}}</td>
           <td class="text-center align-middle"><span class="badge badge-sm badge-accent">{{country.population | number}}</span></td>
-          <td class="text-center align-middle"> <a href="#" class="link link-warning">Más información</a></td>
+          <td class="text-center align-middle"> <a [routerLink]="['/country/by-country', country.cca2]" class="link link-warning">Más información</a></td>
         </tr>
       }
     </tbody>

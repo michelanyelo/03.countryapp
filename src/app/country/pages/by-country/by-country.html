@@ -1,2 +1,21 @@
-<app-search-input-component placeholder="Buscar por país"/>
-<app-country-list-component/>
+<app-search-input-component placeholder="Buscar por país" (value)="query.set($event)" />
+@if(countryResource.isLoading()){
+<div class="flex justify-center mt-5">
+  <div class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+} @else if(countryResource.error()){
+<div class="alert alert-error mt-5">
+  <div class="flex items-center">
+    <div class="alert alert-error flex-1">
+      <span>{{ countryResource.error()?.message }}</span>
+      <button class="btn btn-ghost btn-sm ml-2" (click)="countryResource.set(undefined)">
+        Cerrar
+      </button>
+    </div>
+  </div>
+</div>
+} @else if(countryResource.hasValue()){
+<app-country-list-component [countries]="countryResource.value()!" />
+}
