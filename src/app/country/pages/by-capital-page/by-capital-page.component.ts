@@ -4,7 +4,8 @@ import { CountryListComponent } from '@app/country/components/country-list-compo
 import { CountryService } from '@app/country/services/country.service';
 import { RestCountryResponse } from '@app/country/interfaces/rest-country.interface';
 import { Country } from '@app/country/interfaces/country.interface';
-import { firstValueFrom } from 'rxjs';
+import { firstValueFrom, of } from 'rxjs';
+import { rxResource } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-by-capital-page',
@@ -41,13 +42,23 @@ export class ByCapitalPageComponent {
 
   query = signal<string>('');
 
-  countryResource = resource({
+  // countryResource = resource({
+  //   params: () => ({
+  //     query: this.query(),
+  //   }),
+  //   loader: async ({ params }) => {
+  //     if (!params.query) return [];
+  //     return await firstValueFrom(this.countryService.searchByCapital(params.query));
+  //   },
+  // });
+
+  countryResource = rxResource({
     params: () => ({
       query: this.query(),
     }),
-    loader: async ({ params }) => {
-      if (!params.query) return [];
-      return await firstValueFrom(this.countryService.searchByCapital(params.query));
+    stream: ({ params }) => {
+      if (!params.query) return of([]);
+      return this.countryService.searchByCapital(params.query);
     },
   });
 }
