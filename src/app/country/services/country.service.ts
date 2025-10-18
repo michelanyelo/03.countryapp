@@ -36,4 +36,15 @@ export class CountryService {
       })
     );
   }
+
+  searchCountryByCode(code: string): Observable<Country> {
+    code = code.trim().toLowerCase();
+    return this.http.get<RestCountryResponse[]>(`${this.apiUrl}/alpha/${code}`).pipe(
+      map((resp) => CountryMapper.mapRestCountryToCountry(resp[0])),
+      catchError((error) => {
+        console.log('error', error);
+        return throwError(() => new Error('Error al buscar por código de país'));
+      })
+    );
+  }
 }
