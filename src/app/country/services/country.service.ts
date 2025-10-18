@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { RestCountryResponse } from '../interfaces/rest-country.interface';
-import { map, Observable, catchError, throwError } from 'rxjs';
+import { map, Observable, catchError, throwError, delay } from 'rxjs';
 import { Country } from '../interfaces/country.interface';
 import { CountryMapper } from '../mappers/country.mapper';
 
@@ -28,6 +28,7 @@ export class CountryService {
 
     query = query.trim().toLowerCase();
     return this.http.get<RestCountryResponse[]>(`${this.apiUrl}/name/${query}`).pipe(
+      delay(1000),
       map((resp) => CountryMapper.mapRestCountryArrayToCountryArray(resp)),
       catchError((error) => {
         console.log('error', error);

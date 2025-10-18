@@ -12,16 +12,38 @@
     </tr>
     </thead>
     <tbody>
-      @for(country of countries(); track country.cca2; let i = $index){
+      @if(errorMessage()){
         <tr>
-          <td class="text-center align-middle">{{i + 1}}</td>
-          <td class="text-center align-middle">{{country.cca2}}</td>
-          <td class="text-center align-middle"><img [src]="country.flags.png" [alt]="country.name" class="w-10 mx-auto"></td>
-          <td class="text-center align-middle">{{country.name}}</td>
-          <td class="text-center align-middle">{{country.capital}}</td>
-          <td class="text-center align-middle"><span class="badge badge-sm badge-accent">{{country.population | number}}</span></td>
-          <td class="text-center align-middle"> <a [routerLink]="['/country/by-country', country.cca2]" class="link link-warning">Más información</a></td>
+          <td colspan="7" class="text-center align-middle text-error">
+            <div class="alert alert-error">
+              <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              <span>{{errorMessage()}}</span>
+            </div>
+          </td>
         </tr>
+      } @else if(isLoading()){
+        <tr>
+          <td colspan="7" class="text-center align-middle">
+            <span class="loading loading-spinner loading-lg"></span>
+            <span class="ml-2">Cargando...</span>
+          </td>
+        </tr>
+      } @else {
+        @for(country of countries(); track country.cca2; let i = $index){
+          <tr>
+            <td class="text-center align-middle">{{i + 1}}</td>
+            <td class="text-center align-middle">{{country.cca2}}</td>
+            <td class="text-center align-middle"><img [src]="country.flags.png" [alt]="country.name" class="w-10 mx-auto"></td>
+            <td class="text-center align-middle">{{country.name}}</td>
+            <td class="text-center align-middle">{{country.capital}}</td>
+            <td class="text-center align-middle"><span class="badge badge-sm badge-accent">{{country.population | number}}</span></td>
+            <td class="text-center align-middle"> <a [routerLink]="['/country/by-country', country.cca2]" class="link link-warning">Más información</a></td>
+          </tr>
+        } @empty {
+          <tr>
+            <td colspan="7" class="text-center align-middle">No hay países</td>
+          </tr>
+        }
       }
     </tbody>
   </table>

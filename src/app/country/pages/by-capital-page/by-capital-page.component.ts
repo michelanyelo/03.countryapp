@@ -52,7 +52,7 @@ export class ByCapitalPageComponent {
   //   },
   // });
 
-  countryResource = rxResource({
+  capitalResource = rxResource({
     params: () => ({
       query: this.query(),
     }),
