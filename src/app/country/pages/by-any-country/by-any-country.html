@@ -1,28 +1,15 @@
 @if(countryResource.error()){
-<section>
-  <div class="alert alert-error">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      class="stroke-current shrink-0 h-6 w-6"
-      fill="none"
-      viewBox="0 0 24 24"
-    >
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
-      />
-    </svg>
-    <span>No se encontró el país por el código: {{ countryCode }}</span>
-    <a href="/country/by-country" class="btn btn-secondary">Regresar</a>
-  </div>
-</section>
+<app-not-found />
+}
+
+<!--  -->
+@if(countryResource.isLoading()){
+   <div class="flex justify-center items-center h-screen">
+    <div class="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-900"></div>
+   </div>
 }
 
 <!--  -->
 @if(countryResource.hasValue()){
-<section>
-  <h1>Country: {{ countryCode }}</h1>
-</section>
+  <app-country-information [country]="countryResource.value()" />
 }

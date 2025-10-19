@@ -3,10 +3,12 @@ import { rxResource } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
 import { CountryService } from '@app/country/services/country.service';
 import { throwError } from 'rxjs';
+import { NotFound } from "@app/shared/not-found/not-found";
+import { CountryInformation } from "./country-information/country-information";
 
 @Component({
   selector: 'app-by-any-country',
-  imports: [],
+  imports: [NotFound, CountryInformation],
   templateUrl: './by-any-country.html',
   styleUrl: './by-any-country.scss',
 })
