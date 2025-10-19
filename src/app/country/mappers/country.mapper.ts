@@ -13,6 +13,8 @@ export class CountryMapper {
         alt: country.flags.alt,
       },
       cca2: country.cca2,
+      region: country.region,
+      subregion: country.subregion,
     };
   }
 

@@ -8,4 +8,6 @@ export interface Country {
         alt: string;
     };
     cca2: string;
+    region: string;
+    subregion: string;
 }
